@@ -1,0 +1,107 @@
+﻿set_ideology_commander = {
+	is_shown = {
+		is_ai = no
+	}
+
+	possible = {
+		is_ai = no
+		OR = {
+			any_interest_group = {
+				has_ideology = ideology:ideology_populist
+				any_scope_character = {
+					is_ruler = no
+					OR = {
+						has_role = general
+						has_role = admiral
+					}
+					NOT = { has_ideology = ideology:ideology_fascist }
+				}
+			}
+			any_interest_group = {
+				has_ideology = ideology:ideology_agrarian
+				any_scope_character = {
+					is_ruler = no
+					OR = {
+						has_role = general
+						has_role = admiral
+					}
+					NOT = { has_ideology = ideology:ideology_vanguardist }
+				}
+			}
+			any_interest_group = {
+				OR = {
+					has_ideology = ideology:ideology_pious
+					has_ideology = ideology:ideology_confucian
+				}
+				NOT = { has_ideology = ideology:ideology_stratocratic }
+				any_scope_character = {
+					is_ruler = no
+					OR = {
+						has_role = general
+						has_role = admiral
+					}
+					NOT = { has_ideology = ideology:ideology_fascist }
+				}
+			}
+		}
+	}
+
+	when_taken = {
+		every_interest_group = {
+			limit = {
+				has_ideology = ideology:ideology_populist
+			}
+			every_scope_character = {
+				limit = {
+					is_ruler = no
+					OR = {
+						has_role = general
+						has_role = admiral
+					}
+					NOT = { has_ideology = ideology:ideology_fascist }
+				}
+				set_ideology = ideology:ideology_fascist
+			}
+		}
+		every_interest_group = {
+			limit = {
+				has_ideology = ideology:ideology_agrarian
+			}
+			every_scope_character = {
+				limit = {
+					is_ruler = no
+					OR = {
+						has_role = general
+						has_role = admiral
+					}
+					NOT = { has_ideology = ideology:ideology_vanguardist }
+				}
+				set_ideology = ideology:ideology_vanguardist
+			}
+		}
+		every_interest_group = {
+			limit = {
+				OR = {
+					has_ideology = ideology:ideology_pious
+					has_ideology = ideology:ideology_confucian
+				}
+				NOT = { has_ideology = ideology:ideology_stratocratic }
+			}
+			every_scope_character = {
+				limit = {
+					is_ruler = no
+					OR = {
+						has_role = general
+						has_role = admiral
+					}
+					NOT = { has_ideology = ideology:ideology_fascist }
+				}
+				set_ideology = ideology:ideology_fascist
+			}
+		}
+	}
+
+	ai_chance = {
+		base = 0
+	}
+}
